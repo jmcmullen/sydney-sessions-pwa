@@ -6,9 +6,11 @@
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 body {
   margin: 0;
-  font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 </style>
 

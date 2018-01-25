@@ -1,7 +1,7 @@
 #import "./EventFragment.gql"
 
 query allEvents($filter: EventFilter) {
-  allEvents(filter: $filter) {
+  allEvents(filter: $filter, orderBy: timeStart_ASC) {
     ...Event
   }
 }
