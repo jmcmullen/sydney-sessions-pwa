@@ -1,9 +1,9 @@
 module.exports = {
   build: {},
   head: {},
-  loading: { color: '#3B8070' },
+  loading: { color: '#409EFF' },
   manifest: {
-    theme_color: '#3B8070',
+    theme_color: '#409EFF',
   },
   modules: ['@nuxtjs/pwa', '@nuxtjs/apollo'],
   plugins: [
@@ -19,9 +19,9 @@ module.exports = {
   css: ['element-ui/lib/theme-chalk/index.css'],
   env: {
     HTTP_URI: 'https://api.graph.cool/simple/v1/sydneysessions',
-    WS_URI: 'wss://subscriptions.ap-northeast-1.graph.cool/v1/sydneysessions',
   },
   manifest: {
     name: 'Sydney Sessions',
+    short_name: 'Sydney Sessions',
   },
 };
