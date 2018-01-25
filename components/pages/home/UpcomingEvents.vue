@@ -39,11 +39,16 @@ export default {
   apollo: {
     allEvents: {
       query: EVENTS_QUERY,
-      variables: {
-        filter: {
-          timeEnd_gte: new Date(),
-          approved: true,
-        },
+      variables() {
+        const date = new Date();
+        const week = new Date(date.getTime() + 7 * 24 * 60 * 60 * 1000);
+        return {
+          filter: {
+            timeEnd_gte: date,
+            timeStart_lte: week,
+            approved: true,
+          },
+        };
       },
       result() {
         this.allEvents.map(event => {
