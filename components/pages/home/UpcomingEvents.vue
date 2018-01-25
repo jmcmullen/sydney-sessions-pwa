@@ -1,10 +1,10 @@
 <template>
   <section class="homepage" v-if="allEvents.length">
     <el-row>
-      <el-col :span="8">
+      <el-col :md="8" :lg="8">
         <Filters />
       </el-col>
-      <el-col :span="16">
+      <el-col :md="16" :lg="16">
         <div v-for="day in currentDays" :key="day">
           <h2>{{day}}</h2>
           <div v-for="event in allEvents" :key="event.id">
@@ -72,6 +72,10 @@ export default {
 .homepage {
   margin: 80px auto 0;
   max-width: 980px;
+
+  @media (min-height: 480px) {
+    max-width: 90%;
+  }
 
   .event {
     max-width: 800px;

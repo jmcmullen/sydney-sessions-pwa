@@ -28,9 +28,16 @@ export default {
   height: 60vh;
   background-image: url('~/assets/images/kings-cross.jpg');
   background-size: cover;
+  @media (min-height: 480px) {
+    display: none;
+  }
 }
 .card-box {
   margin: -300px auto 0;
   max-width: 500px;
+  @media (min-height: 480px) {
+    margin: 100px auto;
+    max-width: 90%;
+  }
 }
 </style>
