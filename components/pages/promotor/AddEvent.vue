@@ -38,17 +38,27 @@
             </el-checkbox-group>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="submit">Submit for approval</el-button>
+            <el-button type="primary" @click="submit" :loading="sending">Submit for approval</el-button>
           </el-form-item>
         </el-form>
+      </section>
+
+      <section class="thanks" v-if="step === 3">
+        <i class="el-icon-circle-check"></i>
+        <h2>Thank you! Your event will be reviewed shortly.</h2>
+        <el-button @click="addAnother" round>Import another event</el-button>
+        <nuxt-link :to="{ path: '/'}">
+          Back to the homepage
+        </nuxt-link>
       </section>
     </el-card>
   </section>
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import moment from 'moment';
+import { mapState } from 'vuex';
+import EVENT_CREATE from '~/graphql/Event/EventCreate.gql';
 
 export default {
   data() {
@@ -63,7 +73,7 @@ export default {
         },
       },
       picture: {
-        url: '',
+        source: '',
       },
       details: {
         genres: [],
@@ -71,28 +81,29 @@ export default {
       },
       genres: [
         'HOUSE',
-        'PROG HOUSE',
-        'DEEP HOUSE',
-        'TECH HOUSE',
-        'ACID HOUSE',
+        'PROG_HOUSE',
+        'DEEP_HOUSE',
+        'TECH_HOUSE',
+        'ACID_HOUSE',
         'TECHNO',
         'DISCO',
-        'COMMERCIAL HOUSE',
+        'COMMERCIAL_HOUSE',
         'DNB/BREAKS',
         'MISC',
       ],
       flags: [
-        'INTERNATIONAL ARTIST',
-        'BYO ALCOHOL',
-        'FREE ENTRY',
-        'CASH ONLY',
+        'INTERNATIONAL_ARTIST',
+        'BYO_ALCOHOL',
+        'FREE_ENTRY',
+        'CASH_ONLY',
+        'CRUISE',
         'DAY',
         'FESTIVAL',
-        'BUSH DOOF',
-        'CRUISE',
+        'BUSH_DOOF',
         'WAREHOUSE',
       ],
       error: false,
+      sending: false,
     };
   },
   computed: {
@@ -128,6 +139,7 @@ export default {
           done(events);
         } else if (response.error) {
           this.error = response.error;
+          console.log(response.error);
           if (this.error.code === 104) {
             localStorage.clear();
             this.$router.push({ path: '/promotor/login' });
@@ -145,23 +157,63 @@ export default {
       this.getPicture();
     },
     getPicture() {
-      window.FB.api('/276588012864846?fields=cover', 'GET', {}, response => {
-        this.picture = response.cover;
-        console.log(this.picture, response);
-      });
+      window.FB.api(
+        `/${this.selectedEvent.id}?fields=cover`,
+        'GET',
+        {},
+        response => {
+          this.picture = response.cover;
+          console.log(this.picture, response);
+        }
+      );
     },
-    submit() {
-      const event = {
-        facebookId: this.selectedEvent.id,
-        name: this.selectedEvent.name,
-        description: this.selectedEvent.description,
-        timeStart: this.selectedEvent.start_time,
-        timeEnd: this.selectedEvent.time_end,
-        genres: this.details.genres,
-        flags: this.details.flags,
-        place: this.selectedEvent.place.name,
+    async submit() {
+      try {
+        this.sending = true;
+        await this.$apollo.mutate({
+          mutation: EVENT_CREATE,
+          variables: {
+            facebookId: this.selectedEvent.id,
+            name: this.selectedEvent.name,
+            description: this.selectedEvent.description,
+            timeStart: this.selectedEvent.start_time,
+            timeEnd: this.selectedEvent.end_time,
+            genres: this.details.genres,
+            flags: this.details.flags,
+            place: this.selectedEvent.place.name,
+            promotor: this.user.id,
+          },
+        });
+        this.$message({
+          type: 'success',
+          message: `Your event has been sent for approval!`,
+        });
+        this.sending = false;
+        this.step = 3;
+      } catch (error) {
+        this.$message({
+          type: 'error',
+          message: `Failed to add event! ${error}`,
+        });
+      }
+    },
+    addAnother() {
+      this.step = 1;
+      this.query = '';
+      this.events = [];
+      this.selectedEvent = {
+        name: '',
+        place: {
+          name: '',
+        },
       };
-      console.log(event);
+      this.picture = {
+        source: '',
+      };
+      this.details = {
+        genres: [],
+        flags: [],
+      };
     },
   },
 };
@@ -197,6 +249,20 @@ export default {
 
   .event-pic {
     width: 100%;
+  }
+
+  .thanks {
+    text-align: center;
+
+    i {
+      color: lightgreen;
+      font-size: 80px;
+      margin-top: 50px;
+    }
+
+    .el-button {
+      margin-bottom: 35px;
+    }
   }
 }
 

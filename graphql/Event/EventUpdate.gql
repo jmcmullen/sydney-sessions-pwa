@@ -1,0 +1,12 @@
+fragment Event on Event {
+  id,
+  facebookId,
+  name,
+  description,
+  place,
+  promotor,
+  timeStart,
+  timeEnd,
+  genres,
+  flags
+}

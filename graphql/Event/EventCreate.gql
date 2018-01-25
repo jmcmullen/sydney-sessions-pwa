@@ -1,0 +1,26 @@
+#import "./EventFragment.gql"
+
+mutation createEvent(
+    $facebookId: String!, 
+    $name: String!, 
+    $description: String!, 
+    $place: String!,
+    $promotor: String!,
+    $timeStart: String!,
+    $timeEnd: String,
+    $genres: [GENRE!],
+    $flags: [FLAG!]
+  ) {
+  createEvent(
+    facebookId: $facebookId, 
+    name: $name, 
+    description: $description, 
+    place: $place, 
+    promotor: $promotor, 
+    timeStart: $timeStart, 
+    timeEnd: $timeEnd,
+    genres: $genres,
+    flags: $flags) {
+    ...Event
+  }
+}
