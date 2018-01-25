@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar />
+    <Navbar />
     <nuxt />
   </div>
 </template>
@@ -14,7 +14,10 @@ body {
 
 <script>
 import Navbar from '~/components/common/Navbar';
+
 export default {
-  components: { Navbar },
+  components: {
+    Navbar,
+  },
 };
 </script>
