@@ -1,10 +1,8 @@
 <template>
   <section>
-    <el-card class="box-card">
+      <h2>Authentication Required</h2>
       <p>Login in with Facebook below to add new events, customise your experience, subscribe to promotors and more. We will never post anything without your permission.</p>
       <el-button type="primary" round @click="signIn">Login with Facebook</el-button>
-    </el-card>
-    
   </section>
 </template>
 
@@ -65,16 +63,12 @@ export default {
 
 <style lang="scss" scoped>
 section {
-  margin: 50px;
-}
-
-.el-card {
   max-width: 500px;
-  margin: auto;
+  margin: 100px auto 0;
 }
 
 .el-button {
-  margin: 30px auto;
+  margin: 60px auto;
   display: block;
 }
 </style>

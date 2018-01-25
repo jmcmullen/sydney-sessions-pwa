@@ -1,11 +1,11 @@
 <template>
-  <section>
-    <el-card class="box-card import-event">
+  <section class="import-event">
       <section v-if="step === 1">
-        <p>Search for a Facebook event to import</p>
+        <h2>Find your event</h2>
+        <p>We download your event information directly from Facebook. Search for it below to get started.</p>
         <el-autocomplete
           class="inline-input"
-          placeholder="Enter an event name..."
+          placeholder="Enter your event name..."
           v-model="query"
           :fetch-suggestions="searchEvent"
           :trigger-on-focus="false"
@@ -51,7 +51,6 @@
           Back to the homepage
         </nuxt-link>
       </section>
-    </el-card>
   </section>
 </template>
 
@@ -230,11 +229,9 @@ export default {
 
 <style lang="scss">
 .import-event {
-  &.el-card {
-    max-width: 500px;
-    min-height: 60vh;
-    margin: 80px auto;
-  }
+  max-width: 700px;
+  min-height: 500px;
+  margin: 0 auto;
 
   .el-autocomplete {
     width: 400px;
