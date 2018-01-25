@@ -9,6 +9,7 @@ const createStore = () => {
         email: '',
       },
       admin: {
+        id: '',
         token: null,
       },
       loading: true,

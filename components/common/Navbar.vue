@@ -58,6 +58,13 @@ $black: #212121;
     margin: auto;
     display: flex;
     justify-content: space-between;
+
+    @media (min-height: 480px) {
+      max-width: 90%;
+      .main-menu {
+        display: none;
+      }
+    }
   }
 
   .logo {

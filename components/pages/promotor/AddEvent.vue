@@ -235,6 +235,7 @@ export default {
 
   .el-autocomplete {
     width: 400px;
+    max-width: 100%;
   }
 
   .details {
