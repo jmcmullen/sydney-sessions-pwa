@@ -21,13 +21,7 @@ module.exports = {
     HTTP_URI: 'https://api.graph.cool/simple/v1/sydneysessions',
     WS_URI: 'wss://subscriptions.ap-northeast-1.graph.cool/v1/sydneysessions',
   },
-  // build: {
-  //   extend(config) {
-  //     config.module.rules.push({
-  //       test: /\.(graphql|gql)$/,
-  //       exclude: /node_modules\/(?!(vue-ico)\/).*/,
-  //       loader: 'graphql-tag/loader',
-  //     });
-  //   },
-  // },
+  manifest: {
+    name: 'Sydney Sessions',
+  },
 };
