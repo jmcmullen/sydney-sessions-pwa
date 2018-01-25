@@ -11,5 +11,10 @@ export default {
   components: {
     EventManagement,
   },
+  head() {
+    return {
+      title: 'Sydney Sessions: Admin Area',
+    };
+  },
 };
 </script>

@@ -55,7 +55,7 @@ export default {
 
 <style lang="scss" scoped>
 section {
-  margin: 50px;
+  margin-top: 150px;
 }
 
 .el-card {
