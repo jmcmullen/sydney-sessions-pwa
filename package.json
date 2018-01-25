@@ -4,6 +4,7 @@
   "description": "Vue.js & Nuxt.js PWA to find parties in Sydney.",
   "author": "Jay McMullen <j.mcmullen@koala.com>",
   "private": true,
+  "license": "UNLICENSED",
   "dependencies": {
     "@nuxtjs/apollo": "^3.0.1",
     "@nuxtjs/pwa": "latest",

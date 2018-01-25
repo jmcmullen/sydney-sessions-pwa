@@ -191,10 +191,19 @@ export default {
         this.sending = false;
         this.step = 3;
       } catch (error) {
-        this.$message({
-          type: 'error',
-          message: `Failed to add event! ${error}`,
-        });
+        // We don't allow duplicate events.
+        if (JSON.stringify(error).indexOf('Field name = facebookId') > 0) {
+          this.$message({
+            type: 'error',
+            message: `This event is already pending approval.`,
+          });
+          this.addAnother();
+        } else {
+          this.$message({
+            type: 'error',
+            message: `Failed to add event! ${error}`,
+          });
+        }
       }
     },
     addAnother() {

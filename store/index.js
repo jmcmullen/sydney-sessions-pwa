@@ -5,9 +5,11 @@ const createStore = () => {
     state: {
       user: {
         id: '',
-        admin: false,
         accessToken: '',
         email: '',
+      },
+      admin: {
+        token: null,
       },
       loading: true,
       error: {
@@ -16,13 +18,17 @@ const createStore = () => {
     },
     mutations: {
       SET_USER(state, auth) {
-        state.user.admin = true;
         state.user.id = auth.userID;
         state.user.email = auth.email;
         state.user.accessToken = auth.accessToken;
         localStorage.setItem('USER_ID', auth.userID);
         localStorage.setItem('USER_EMAIL', auth.email);
         localStorage.setItem('ACCESS_TOKEN', auth.accessToken);
+      },
+      SET_ADMIN(state, admin) {
+        state.admin = admin;
+        localStorage.setItem('ADMIN_ID', admin.user.id);
+        localStorage.setItem('ADMIN_TOKEN', admin.token);
       },
     },
   });
