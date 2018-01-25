@@ -197,13 +197,13 @@ export default {
             type: 'error',
             message: `This event is already pending approval.`,
           });
-          this.addAnother();
         } else {
           this.$message({
             type: 'error',
             message: `Failed to add event! ${error}`,
           });
         }
+        this.addAnother();
       }
     },
     addAnother() {

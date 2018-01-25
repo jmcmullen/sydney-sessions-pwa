@@ -1,18 +1,16 @@
 <template>
-  <section class="container">
-    {{online}}
-    
+  <section>
+    <UpcomingEvents />
   </section>
 </template>
 
 <script>
+import UpcomingEvents from '~/components/pages/home/UpcomingEvents';
+
 export default {
-  data() {
-    return {
-      online: true,
-    };
+  components: {
+    UpcomingEvents,
   },
-  mounted() {},
 };
 </script>
 

@@ -1,0 +1,13 @@
+#import "./EventFragment.gql"
+
+mutation UpdateEvent(
+  $id: ID!
+  $approved: Boolean!
+) {
+  updateEvent(
+  	id: $id, 
+    approved: $approved    
+  ) {
+    ...Event
+  }
+}
