@@ -105,6 +105,15 @@ export default {
       },
     },
   },
+  mounted() {
+    if (localStorage.getItem('ADMIN_TOKEN')) {
+      this.$store.commit('SET_ADMIN', {
+        user: { id: localStorage.getItem('ADMIN_ID') },
+        token: localStorage.getItem('ADMIN_TOKEN'),
+      });
+      this.$router.push('/admin/login');
+    }
+  },
 };
 </script>
 

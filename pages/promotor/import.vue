@@ -14,6 +14,11 @@ export default {
   components: {
     AddEvent,
   },
+  head() {
+    return {
+      title: 'Sydney Sessions: Import an Event',
+    };
+  },
 };
 </script>
 

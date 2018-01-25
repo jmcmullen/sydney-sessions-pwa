@@ -11,5 +11,10 @@ export default {
   components: {
     EmailAuth,
   },
+  head() {
+    return {
+      title: 'Sydney Sessions: Authentication Required',
+    };
+  },
 };
 </script>

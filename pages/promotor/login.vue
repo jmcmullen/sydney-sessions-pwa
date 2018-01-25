@@ -14,6 +14,11 @@ export default {
   components: {
     FacebookAuth,
   },
+  head() {
+    return {
+      title: 'Sydney Sessions: Authentication Required',
+    };
+  },
 };
 </script>
 
