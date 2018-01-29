@@ -8,7 +8,7 @@ export default ctx => {
   const token = () => {
     return process.server
       ? ctx.req.session
-      : `Bearer ${localStorage.getItem('ADMIN_TOKEN')}` || null;
+      : localStorage.getItem('ADMIN_TOKEN') || null;
   };
 
   const middlewareLink = new ApolloLink((operation, forward) => {
@@ -17,7 +17,9 @@ export default ctx => {
     });
     return forward(operation);
   });
+
   const link = middlewareLink.concat(httpLink);
+
   return {
     link,
     cache: new InMemoryCache(),

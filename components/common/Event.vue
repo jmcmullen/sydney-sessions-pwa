@@ -1,5 +1,5 @@
 <template>
-  <article>
+  <section>
     <div slot="header" class="clearfix">
       <a :href="fbLink" target="_blank" class="event-link">{{event.name}}</a>
     </div>
@@ -8,7 +8,7 @@
       <el-tag v-for="flag in event.flags" :key="flag" type="primary" size="small">{{formatDetail(flag)}}</el-tag>
       <el-tag v-for="genre in event.genres" :key="genre" type="info" size="small">{{formatDetail(genre)}}</el-tag>
     </div>
-  </article>
+  </section>
 </template>
 
 <script>

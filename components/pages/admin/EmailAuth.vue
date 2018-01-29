@@ -39,9 +39,9 @@ export default {
           },
         });
         const { user, token } = resp.data.signinUser;
-        console.log(user, token);
         this.$store.commit('SET_ADMIN', { admin: { user, token } });
         this.$router.push('/admin/approve');
+        console.log(user, token);
       } catch (error) {
         this.$message({
           type: 'error',
@@ -50,15 +50,15 @@ export default {
       }
     },
   },
-  mounted() {
-    if (localStorage.getItem('ADMIN_TOKEN')) {
-      this.$store.commit('SET_ADMIN', {
-        user: { id: localStorage.getItem('ADMIN_ID') },
-        token: localStorage.getItem('ADMIN_TOKEN'),
-      });
-      this.$router.push('/admin/approve');
-    }
-  },
+  // mounted() {
+  //   if (localStorage.getItem('ADMIN_TOKEN')) {
+  //     this.$store.commit('SET_ADMIN', {
+  //       user: { id: localStorage.getItem('ADMIN_ID') },
+  //       token: localStorage.getItem('ADMIN_TOKEN'),
+  //     });
+  //     this.$router.push('/admin/approve');
+  //   }
+  // },
 };
 </script>
 

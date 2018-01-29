@@ -1,0 +1,7 @@
+fragment Event on Event {
+  id
+  email
+  facebookId
+  createdAt
+  updatedAt
+}

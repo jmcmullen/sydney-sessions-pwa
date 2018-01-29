@@ -78,7 +78,6 @@ export default {
   }
 
   .event {
-    max-width: 800px;
     margin: 15px auto;
   }
 }

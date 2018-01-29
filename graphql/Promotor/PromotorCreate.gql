@@ -1,0 +1,13 @@
+#import "./PromotorFragment.gql"
+
+mutation createPromotor(
+    $facebookId: String!, 
+    $email: String!, 
+  ) {
+  createPromotor(
+    facebookId: $facebookId, 
+    email: $email
+  ) {
+    ...Promotor
+  }
+}

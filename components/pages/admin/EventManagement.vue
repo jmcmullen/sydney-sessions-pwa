@@ -105,11 +105,11 @@ export default {
       },
     },
   },
-  mounted() {
-    if (!localStorage.getItem('ADMIN_TOKEN')) {
-      this.$router.push('/admin/login');
-    }
-  },
+  // mounted() {
+  //   if (!localStorage.getItem('ADMIN_TOKEN')) {
+  //     this.$router.push('/admin/login');
+  //   }
+  // },
 };
 </script>
 

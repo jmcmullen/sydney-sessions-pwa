@@ -1,0 +1,7 @@
+#import "./PromotorFragment.gql"
+
+query allPromotors($filter: PromotorFilter) {
+  allPromotors(filter: $filter, orderBy: timeStart_ASC) {
+    ...Promotor
+  }
+}

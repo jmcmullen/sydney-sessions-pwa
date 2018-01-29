@@ -26,7 +26,7 @@ const createStore = () => {
         localStorage.setItem('USER_EMAIL', auth.email);
         localStorage.setItem('ACCESS_TOKEN', auth.accessToken);
       },
-      SET_ADMIN(state, admin) {
+      SET_ADMIN(state, { admin }) {
         state.admin = admin;
         localStorage.setItem('ADMIN_ID', admin.user.id);
         localStorage.setItem('ADMIN_TOKEN', admin.token);
