@@ -19,7 +19,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import USER_SIGN_IN from '~/graphql/User/UserSignIn.gql';
+import USER_SIGN_IN from '~/graphql/Admin/UserSignIn.gql';
 
 export default {
   data() {
