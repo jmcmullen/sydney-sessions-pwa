@@ -21,7 +21,9 @@ module.exports = {
     HTTP_URI: 'https://api.graph.cool/simple/v1/sydneysessions',
   },
   manifest: {
-    name: 'Sydney Sessions',
-    short_name: 'Sydney Sessions',
+    name: 'Sessions',
+    short_name: 'Sessions',
+    ogTitle: 'sessions.sydney',
+    ogDescription: 'Upcoming dance music events in Sydney, Australia',
   },
 };
