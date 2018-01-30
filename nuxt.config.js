@@ -8,6 +8,7 @@ module.exports = {
   modules: ['@nuxtjs/pwa', '@nuxtjs/apollo'],
   plugins: [
     { src: '~/plugins/fb-sdk', ssr: false },
+    { src: '~plugins/ga.js', ssr: false },
     { src: '~/plugins/element-ui' },
     { src: '~/plugins/apollo' },
   ],

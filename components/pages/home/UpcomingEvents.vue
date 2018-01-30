@@ -1,10 +1,10 @@
 <template>
   <section class="homepage" v-if="allEvents.length">
     <el-row>
-      <el-col :md="8" :lg="8">
+      <el-col :sm="8" :md="8" :lg="8">
         <Filters />
       </el-col>
-      <el-col :md="16" :lg="16">
+      <el-col :sm="16" :md="16" :lg="16">
         <div v-for="day in currentDays" :key="day">
           <h2>{{day}}</h2>
           <div v-for="event in allEvents" :key="event.id">
