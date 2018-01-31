@@ -1,15 +1,23 @@
 <template>
-  <section class="homepage" v-if="allEvents.length">
+  <section class="homepage">
     <el-row>
       <el-col :sm="8" :md="8" :lg="8">
+        <!-- <el-alert
+          title="Welcome to sessions.sydney, a listing of all underground dance music events in Sydney. If your event is missing, navigate here to add it."
+          type="info"
+        >
+        </el-alert> -->
         <Filters />
       </el-col>
       <el-col :sm="16" :md="16" :lg="16">
-        <div v-for="day in currentDays" :key="day">
-          <h2>{{day}}</h2>
-          <div v-for="event in allEvents" :key="event.id">
-            <div v-if="day === formatDate(event.timeStart)">
-              <Event class="event" :event="event" />
+        <div class="loading" v-loading.fullscreen.lock="!allEvents.length"></div>
+        <div class="events" v-if="allEvents.length">
+          <div v-for="day in currentDays" :key="day">
+            <h2>{{day}}</h2>
+            <div v-for="event in allEvents" :key="event.id">
+              <div v-if="day === formatDate(event.timeStart)">
+                <Event class="event" :event="event" />
+              </div>
             </div>
           </div>
         </div>
@@ -52,7 +60,6 @@ export default {
       },
       result() {
         this.allEvents.map(event => {
-          console.log(event);
           const result = moment(event.timeStart).format('dddd, Do MMM YYYY');
           if (!this.currentDays.includes(result)) {
             this.currentDays.push(result);

@@ -138,7 +138,6 @@ export default {
           done(events);
         } else if (response.error) {
           this.error = response.error;
-          console.log(response.error);
           if (this.error.code === 104) {
             localStorage.clear();
             this.$router.push({ path: '/promotor/login' });
@@ -151,7 +150,6 @@ export default {
       });
     },
     selectEvent(event) {
-      console.log(event);
       this.selectedEvent = event;
       this.getPicture();
     },
@@ -162,7 +160,6 @@ export default {
         {},
         response => {
           this.picture = response.cover;
-          console.log(this.picture, response);
         }
       );
     },

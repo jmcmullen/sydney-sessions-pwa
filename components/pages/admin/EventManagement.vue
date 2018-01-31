@@ -86,7 +86,6 @@ export default {
         });
         this.allEvents = this.allEvents.filter(i => i.id !== id);
       } catch (error) {
-        console.log(error);
         this.$message({
           type: 'error',
           message: error.message,

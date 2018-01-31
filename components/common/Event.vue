@@ -1,7 +1,7 @@
 <template>
   <section>
     <div slot="header" class="clearfix">
-      <a :href="fbLink" target="_blank" class="event-link">{{event.name}}</a>
+      <a :href="fbLink" target="_blank" rel="noopener" @click="trackLink(fbLink)" class="event-link">{{event.name}}</a>
     </div>
     <div class="event-details">
       <p>{{event.place}} <span class="date">{{date}}</span></p>
@@ -37,6 +37,16 @@ export default {
     },
     formatDetail(detail) {
       return detail.replace('_', ' ');
+    },
+    trackLink(url) {
+      if (process.browser) {
+        ga('send', 'event', 'outbound', 'click', url, {
+          transport: 'beacon',
+          hitCallback: function() {
+            document.location = url;
+          },
+        });
+      }
     },
   },
 };

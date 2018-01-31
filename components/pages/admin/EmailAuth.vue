@@ -13,7 +13,6 @@
         </el-form-item>
       </el-form>
     </el-card>
-    
   </section>
 </template>
 
@@ -41,7 +40,6 @@ export default {
         const { user, token } = resp.data.signinUser;
         this.$store.commit('SET_ADMIN', { admin: { user, token } });
         this.$router.push('/admin/approve');
-        console.log(user, token);
       } catch (error) {
         this.$message({
           type: 'error',
