@@ -10,8 +10,8 @@
         <Filters />
       </el-col>
       <el-col :sm="16" :md="16" :lg="16">
-        <div class="loading" v-loading.fullscreen.lock="!allEvents.length"></div>
-        <div class="events" v-if="allEvents.length">
+        <div class="loading" v-loading.fullscreen.lock="loading"></div>
+        <div class="events" v-if="!loading">
           <div v-for="day in currentDays" :key="day">
             <h2>{{day}}</h2>
             <div v-for="event in allEvents" :key="event.id">
@@ -35,9 +35,21 @@ import Event from '~/components/common/Event';
 export default {
   data() {
     return {
+      loading: true,
       allEvents: [],
       currentDays: [],
     };
+  },
+  mounted() {
+    const timeout = setTimeout(() => {
+      this.loading = false;
+      this.$notify.error({
+        duration: 0,
+        position: 'bottom-left',
+        title: 'Database Error',
+        message: `Sorry, we're currently experiencing issues connecting to our database. Please try again later.`,
+      });
+    }, 5000);
   },
   methods: {
     formatDate(date) {
@@ -59,6 +71,7 @@ export default {
         };
       },
       result() {
+        this.loading = false;
         this.allEvents.map(event => {
           const result = moment(event.timeStart).format('dddd, Do MMM YYYY');
           if (!this.currentDays.includes(result)) {
