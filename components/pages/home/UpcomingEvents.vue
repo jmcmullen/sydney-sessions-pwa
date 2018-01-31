@@ -42,14 +42,16 @@ export default {
   },
   mounted() {
     const timeout = setTimeout(() => {
-      this.loading = false;
-      this.$notify.error({
-        duration: 0,
-        position: 'bottom-left',
-        title: 'Database Error',
-        message: `Sorry, we're currently experiencing issues connecting to our database. Please try again later.`,
-      });
-    }, 5000);
+      if (this.loading) {
+        this.loading = false;
+        this.$notify.error({
+          duration: 0,
+          position: 'bottom-left',
+          title: 'Database Error',
+          message: `Sorry, we're currently experiencing issues connecting to our database. Please try again later.`,
+        });
+      }
+    }, 15000);
   },
   methods: {
     formatDate(date) {
