@@ -10,7 +10,7 @@
         <Filters />
       </el-col>
       <el-col :sm="16" :md="16" :lg="16">
-        <div class="loading" v-loading="loading"></div>
+        <div class="loading" v-loading="true"></div>
         <div class="events" v-if="!loading">
           <div v-for="day in currentDays" :key="day">
             <h2>{{day}}</h2>
@@ -99,6 +99,13 @@ export default {
 
   .event {
     margin: 15px auto;
+  }
+
+  .loading {
+    display: block;
+    height: 100px;
+    width: 100px;
+    margin-left: 100px;
   }
 }
 </style>
