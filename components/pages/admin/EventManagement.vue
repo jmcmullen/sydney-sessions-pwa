@@ -36,15 +36,15 @@
 import moment from 'moment';
 import EVENTS_QUERY from '~/graphql/Event/AllEvents.gql';
 import EVENT_APPROVE from '~/graphql/Event/EventApprove.gql';
-import DAY from '~/assets/icons/DAY.svg';
-import FESTIVAL from '~/assets/icons/FESTIVAL.svg';
-import CRUISE from '~/assets/icons/CRUISE.svg';
-import INTERNATIONAL_ARTIST from '~/assets/icons/INTERNATIONAL_ARTIST.svg';
-import FREE_ENTRY from '~/assets/icons/FREE_ENTRY.svg';
-import BYO_ALCOHOL from '~/assets/icons/BYO_ALCOHOL.svg';
-import WAREHOUSE from '~/assets/icons/WAREHOUSE.svg';
-import BUSH_DOOF from '~/assets/icons/BUSH_DOOF.svg';
-import CASH_ONLY from '~/assets/icons/CASH_ONLY.svg';
+import DAY from '~/assets/images/icons/DAY.svg';
+import FESTIVAL from '~/assets/images/icons/FESTIVAL.svg';
+import CRUISE from '~/assets/images/icons/CRUISE.svg';
+import INTERNATIONAL_ARTIST from '~/assets/images/icons/INTERNATIONAL_ARTIST.svg';
+import FREE_ENTRY from '~/assets/images/icons/FREE_ENTRY.svg';
+import BYO_ALCOHOL from '~/assets/images/icons/BYO_ALCOHOL.svg';
+import WAREHOUSE from '~/assets/images/icons/WAREHOUSE.svg';
+import BUSH_DOOF from '~/assets/images/icons/BUSH_DOOF.svg';
+import CASH_ONLY from '~/assets/images/icons/CASH_ONLY.svg';
 
 export default {
   data() {

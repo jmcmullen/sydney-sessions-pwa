@@ -1,3 +1,5 @@
+const { resolve } = require('path');
+
 module.exports = {
   build: {},
   head: {},
@@ -5,11 +7,16 @@ module.exports = {
   manifest: {
     theme_color: '#409EFF',
   },
-  modules: ['@nuxtjs/pwa', '@nuxtjs/apollo'],
+  modules: ['@nuxtjs/pwa', '@nuxtjs/apollo', 'nuxt-sass-resources-loader'],
+  sassResources: [
+    resolve(__dirname, 'assets/styles/settings/variables.scss'),
+    resolve(__dirname, 'assets/styles/vendor/avalanche.scss'),
+  ],
+  css: ['normalize.css', '~/assets/styles/global.scss'],
   plugins: [
     { src: '~/plugins/fb-sdk', ssr: false },
     { src: '~plugins/ga.js', ssr: false },
-    { src: '~/plugins/element-ui' },
+    // { src: '~/plugins/element-ui' },
     { src: '~/plugins/apollo' },
   ],
   apollo: {
@@ -17,7 +24,6 @@ module.exports = {
       default: '~/plugins/apollo.js',
     },
   },
-  css: ['element-ui/lib/theme-chalk/index.css'],
   env: {
     HTTP_URI: 'https://api.graph.cool/simple/v1/sydneysessions',
   },

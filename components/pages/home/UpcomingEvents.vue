@@ -99,6 +99,11 @@ export default {
     max-width: 90%;
   }
 
+  h2 {
+    color: #fff;
+    text-transform: uppercase;
+  }
+
   .event {
     margin: 15px auto;
   }
